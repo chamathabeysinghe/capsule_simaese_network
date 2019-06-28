@@ -26,10 +26,11 @@ def CapsNet(input_shape, n_class, routings):
     # If using tensorflow, this will not be necessary. :)
     out_caps = Length(name='capsnet')(digitcaps)
 
-    tunnel = models.Model(input, out_caps)
+    tunnel_l = models.Model(input, out_caps)
+    tunnel_r = models.Model(input, out_caps)
 
-    encoded_l = tunnel(left_input)
-    encoded_r = tunnel(right_input)
+    encoded_l = tunnel_l(left_input)
+    encoded_r = tunnel_r(right_input)
 
     L1_layer = layers.Lambda(lambda tensors: K.abs(tensors[0] - tensors[1]))
     L1_distance = L1_layer([encoded_l, encoded_r])
