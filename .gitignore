@@ -165,4 +165,5 @@ weights
 data
 *.zip
 .DS_Store
-
+checkpoints_capsule
+checkpoints_convolutional
