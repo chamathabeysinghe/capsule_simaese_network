@@ -10,6 +10,24 @@ Author: Xifeng Guo, E-mail: `guoxifeng1990@163.com`, Github: `https://github.com
 import keras.backend as K
 import tensorflow as tf
 from keras import initializers, layers
+import numpy as np
+from keras.regularizers import l2
+
+
+def initialize_weights(shape, name=None):
+    """
+        The paper, http://www.cs.utoronto.ca/~gkoch/files/msc-thesis.pdf
+        suggests to initialize CNN layer weights with mean as 0.0 and standard deviation of 0.01
+    """
+    return np.random.normal(loc = 0.0, scale = 1e-2, size = shape)
+
+
+def initialize_bias(shape, name=None):
+    """
+        The paper, http://www.cs.utoronto.ca/~gkoch/files/msc-thesis.pdf
+        suggests to initialize CNN layer bias with mean as 0.5 and standard deviation of 0.01
+    """
+    return np.random.normal(loc = 0.5, scale = 1e-2, size = shape)
 
 
 class Length(layers.Layer):
@@ -184,6 +202,8 @@ def PrimaryCap(inputs, dim_capsule, n_channels, kernel_size, strides, padding):
     :return: output tensor, shape=[None, num_capsule, dim_capsule]
     """
     output = layers.Conv2D(filters=dim_capsule*n_channels, kernel_size=kernel_size, strides=strides, padding=padding,
+                           kernel_initializer=initialize_weights,
+                           bias_initializer=initialize_bias, kernel_regularizer=l2(2e-4),
                            name='primarycap_conv2d')(inputs)
     outputs = layers.Reshape(target_shape=[-1, dim_capsule], name='primarycap_reshape')(output)
     return layers.Lambda(squash, name='primarycap_squash')(outputs)
