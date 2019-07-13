@@ -169,3 +169,4 @@ checkpoints_capsule
 checkpoints_convolutional
 logs_cnn
 logs_deepcaps
+logs_capsule_rev1
