@@ -167,3 +167,5 @@ data
 .DS_Store
 checkpoints_capsule
 checkpoints_convolutional
+logs_cnn
+logs_deepcaps
