@@ -172,6 +172,8 @@ logs_deepcaps
 logs_capsule_rev1
 logs_capsule_rev2
 logs_capsule_rev3
+logs_capsule_raw
 checkpoints_capsule_rev1
 checkpoints_capsule_rev2
 checkpoints_capsule_rev3
+checkpoints_capsule_raw
