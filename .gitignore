@@ -180,3 +180,10 @@ checkpoints_capsule_rev2_fix2
 checkpoints_capsule_rev3
 checkpoints_capsule_raw
 mnist_data
+checkpoints_capsule_raw_fixed/
+checkpoints_capsule_rev1_fixed/
+logs_capsule_raw_fixed/
+logs_capsule_rev1_fixed/
+logs_capsule_rev2_fix/
+logs_capsule_rev2_fix2/
+logs_capsule_rev3_fixed/
